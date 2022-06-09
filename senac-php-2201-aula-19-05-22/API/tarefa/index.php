@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){ //se o requisitante usar método GET
 
     if(isset($_GET['id'])){
 
-        $id = preg_replace('/\D/', '', $_GET['id']);
+        $id = preg_replace('/\D/', '', $_GET['id']); /* tratativa para sql injecti */
         $strSql = "WHERE id = $id";
     }
 
@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){ //se o requisitante usar método GET
 
         if($registro['apagado'] ! = 0){
             
-            if(isset[$_GET['id']]) exit(http_response_code(204));
+            if(isset[$_GET['id']]) exit(http_response_code(204)); /* erro */
 
             continue;
 
@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){ //se o requisitante usar método GET
 
         http_response_code(404);
 
-        echo json_encode($saida);
+        echo json_encode($saida); /*transformar string em json */
         exit();
     }
 
@@ -58,7 +58,7 @@ if($metodo == 'POST' || $metodo == 'PUT'){
         
         echo json_encode(['erro' => 'JSON invalido']);
 
-        exit( http_response_code(400));
+        exit( http_response_code(400)); /* erro na requesicao */
 
     }
     if(!isset($tarefa->descricao || !isset($tarefa->imagem))){
@@ -82,7 +82,7 @@ if($metodo == 'POST' || $metodo == 'PUT'){
 
 //FIM se o requisitante usar o método POST ou PUT
 
-//se o requisitante usar o método DELTE
+//se o requisitante usar o método DELETE
 if($metodo == 'DELETE'){
 
     if( !isset($_GET['id'])){
