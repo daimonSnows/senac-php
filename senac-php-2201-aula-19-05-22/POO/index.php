@@ -14,7 +14,7 @@ class Main{
     public function __construct()
     {
 
-        $this->$num1 = isset($_POST['num1']) ? (int) $_POST['num1'] ?? null;
+        $this->$num1 = isset($_POST['num1']) ? (int) $_POST['num1'] ?? null; /* tratamento do input */
         $this->$num1 = isset($_POST['num2']) ? (int) $_POST['num1'] ?? null;
 
         $this->calc = new calculadora ($this->num1, $this->num2);
@@ -48,7 +48,7 @@ class Main{
         }
     }
 
-    private function front(?int $n1, ?int $n2, ?int $resultado = null):void
+    private function front(?int $n1, ?int $n2, ?int $resultado = null):void /* nulo ou inteiro */
     {
         include 'front.php';
     }
